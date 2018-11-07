@@ -1,52 +1,55 @@
-<div class="mainHeader"></div>
-  <h1>Eat Da Burger</h1>
-  <img src="../public/assets/img/10610529.jpg" alt="picture of burger">
+<div class="row">
+  <div class="col s4">
+    {{!-- Fresh Burgers --}}
+    <div id="freshBurgersDiv">
+      <h3 class="center-align">Fresh Burgers!</h3>
+        <ul class="center-align">
+          {{#each burgers}}
+              {{#unless devoured}}
+                  <li>
+                    <p>{{this.burger_name}}</p>
+                      <button class="devour-burger btn btn-danger text-right" data-id="{{this.id}}">DEVOUR</button>
+                  </li>
+              {{/unless}}
+          {{/each}}
+        </ul>  
+    </div>
+  </div>
 
-  <div id="addBurgerDiv">
-    <h3>Add a Burger!</h3>
-      <form class="text-left add-burger">
-          <div class="form-group">
-              <label for="new-burger">Burger Name:</label>
-              <input type="text" class="form-control" id="new-burger">
-          </div>
-          <button type="submit" class="btn btn-success">Add Burger!</button>
-      </form>
+  <div class="col s4">
+    {{!-- Add Burger --}}
+    <div class="mainHeader">
+      <h1 class="center-align">Eat Da Burger</h1></div> 
+      <img src="assets/img/10610529.jpg" alt="picture of burger" class="happyburger">
+      <div id="addBurgerDiv">
+        <h3>Add a Burger!</h3>
+          <form class="text-left add-burger">
+              <div class="form-group">
+                  <label for="new-burger">Burger Name:</label>
+                  <input type="text" class="form-control" id="new-burger">
+              </div>
+              <button type="submit" class="btn btn-success">Add Burger!</button>
+          </form>
+      </div>
+    
+  </div>
+
+  <div class="col s4">
+    {{!-- Eatten --}}
+    <div id="devouredBurgersDiv">
+      <h3 class="center-align">Devoured Burgers:</h3>
+        <ul class="center-align">
+            {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                  <p>{{this.burger_name}}</p>
+                </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
   </div>
 </div>
-<br><br><br><br> 
-
-<div id="freshBurgersDiv">
-  <h3>Fresh Burgers!</h3>
-    <ul>
-      {{#each burgers}}
-          {{#unless devoured}}
-              <li>
-                <p>{{this.burger_name}}</p>
-                  <button class="devour-burger btn btn-danger text-right" data-id="{{this.id}}">DEVOUR</button>
-              </li>
-          {{/unless}}
-      {{/each}}
-    </ul>
-  <br><br><br><br>   
-</div>
-
-<div id="devouredBurgersDiv">
-  <h3>Devoured Burgers:</h3>
-    <ul>
-        {{#each burgers}}
-            {{#if devoured}}
-            <li>
-              <p>{{this.burger_name}}</p>
-            </li>
-            {{/if}}
-        {{/each}}
-    </ul>
-</div>
-  <br><br><br><br>
-
-
-
- 
 
 <script>
     $(".devour-burger").on("click", function(event) {
